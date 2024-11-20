@@ -1,4 +1,4 @@
-import { Controller, Get, HttpException, Param } from '@nestjs/common';
+import { Controller, Get, HttpException, Param, Post } from '@nestjs/common';
 import { CountriesInfoService } from './countries-info.service';
 
 @Controller('countries')
@@ -24,4 +24,25 @@ export class CountriesInfoController {
         throw new HttpException(error.message, error.status);
       }
   }
+
+  @Get('/flag/:code')
+  async getCountryFlag(@Param('code') code: string) {
+    try {
+        return await this.countriesInfoService.getCountryFlag(code);
+      } catch (error) {
+        console.log(error);
+        throw new HttpException(error.message, error.status);
+      }
+  }
+
+  @Post('/population/:code')
+  async getCountryPopulationInfo(@Param('code') code: string) {
+    try {
+        return await this.countriesInfoService.getCountryPopulationInfo(code);
+      } catch (error) {
+        console.log(error);
+        throw new HttpException(error.message, error.status);
+      }
+  }
+
 }

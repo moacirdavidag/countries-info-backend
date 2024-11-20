@@ -35,7 +35,7 @@ export class CountriesInfoController {
       }
   }
 
-  @Post('/population/:code')
+  @Get('/population/:code')
   async getCountryPopulationInfo(@Param('code') code: string) {
     try {
         return await this.countriesInfoService.getCountryPopulationInfo(code);

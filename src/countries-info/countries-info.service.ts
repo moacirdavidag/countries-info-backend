@@ -37,7 +37,7 @@ export class CountriesInfoService {
         const countryCodeToUpperCase = String(countryCode).toUpperCase();
         const URL = 'https://countriesnow.space/api/v0.1/countries/flag/images';
         const countryFlag = await this.httpService.get(URL).pipe(map(response => {
-            const country = response.data?.data?.find(countryByCode => countryByCode.iso3 === countryCodeToUpperCase);
+            const country = response.data?.data?.find(countryByCode => countryByCode.iso2 === countryCodeToUpperCase);
             return country;
         }));
         return countryFlag;
